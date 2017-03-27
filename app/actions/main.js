@@ -14,10 +14,14 @@ export const receiveTimelineData = (data) => {
 };
 
 const parseTimelineData = (data) => {
+    var output;
     data.forEach((d) => {
         d.displayDatetime = new Date(d.dateTime).toDateString();
     });
-    return data;
+    output = data.sort((a, b) => {
+        return a.dateTime > b.dateTime;
+    });
+    return output;
 };
 
 export const fetchTimelineData = () => {
@@ -73,4 +77,13 @@ export const fetchTimelineData = () => {
             console.log("data", data);
         });
     };
+};
+
+export const filterTimeline = (filterText, timelineItems) => {
+    console.log("filtetimeline", filterText, timelineItems);
+    return {
+        type: 'TIMELINE_FILTER',
+        filterText,
+        timelineItems
+    };    
 };

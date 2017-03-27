@@ -6,6 +6,7 @@ var applyMiddleware = require('redux').applyMiddleware;
 var Provider = require('react-redux').Provider;
 var reducer = require('../reducers/main.js');
 var thunkMiddleware = require('redux-thunk').default;
+var Header = require('./header.js');
 
 const store = createStore(
                     reducer,
@@ -14,7 +15,10 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <ShowTimeLine store={store}></ShowTimeLine>
+        <div>
+            <Header store={store}></Header>
+            <ShowTimeLine></ShowTimeLine>
+        </div>
     </Provider>,    
     document.getElementById('app')
 );

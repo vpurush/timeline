@@ -1,7 +1,6 @@
 var combineReducers = require('redux').combineReducers;
 
 var TimeLineList = function(prevState, action){
-    console.log("timelinelist", prevState);
     if(action.type == "RECEIVE_TIMELINE_DATA"){
         return action.data;
     }else{
@@ -18,9 +17,28 @@ var FetchingTimeLineList = function(prevState, action){
     return prevState || false;
 };
 
+var FilteredTimeLineList = function(prevState, action){
+    console.log("filteredtimelinelist reducer", prevState);
+    if(action.type == "TIMELINE_FILTER"){
+        if(action.filterText && action.filterText.length > 0){
+            var filterTextLower = action.filterText.toLowerCase();
+            var output = action.timelineItems.filter(function(t){
+                return t.title.toLowerCase().indexOf(filterTextLower) != -1 || t.desc.toLowerCase().indexOf(filterTextLower) != -1;
+            });
+            return output;
+        }else{
+            return action.timelineItems;
+        }
+    } else if(action.type == "RECEIVE_TIMELINE_DATA"){
+        return action.data;
+    }
+    return prevState || [];
+};
+
 var reducer = combineReducers({
     TimeLineList,
-    FetchingTimeLineList
+    FetchingTimeLineList,
+    FilteredTimeLineList
 });
 
 module.exports = reducer;
