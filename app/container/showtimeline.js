@@ -1,26 +1,26 @@
 var React = require('react');
 var connect = require('react-redux').connect;
-var TimeLine = require('../presentationComponents/timeLine.js');
-var fetchTimelineData = require('../actions/main.js').fetchTimelineData;
+var TimeLine = require('../components/timeline/timeline.js');
+var fetchTimelineItems = require('../actions/main.js').fetchTimelineItems;
 
 const mapStateToProps = (state, ownProps) => {
     console.log("map state to props", ownProps);
 
     return {
-        List: state.FilteredTimeLineList
+        List: state.Timeline.FilteredTimeLineItems
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    dispatch(fetchTimelineData()); 
+    dispatch(fetchTimelineItems()); 
     return {
 
     };
 };
 
-var ShowTimeLine = connect(
+var ShowTimeline = connect(
     mapStateToProps,
     mapDispatchToProps
 )(TimeLine);
 
-module.exports = ShowTimeLine;
+module.exports = ShowTimeline;

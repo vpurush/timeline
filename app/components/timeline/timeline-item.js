@@ -1,4 +1,3 @@
-require('./timeline-item.scss');
 var React = require('react');
 //var $ = require('jquery');
 

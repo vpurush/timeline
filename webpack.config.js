@@ -5,7 +5,7 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
-    entry: __dirname + '/app/containerComponents/app.js',
+    entry: __dirname + '/app/container/app.js',
     module:{
         loaders: [
             {

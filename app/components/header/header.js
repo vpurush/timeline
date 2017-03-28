@@ -1,4 +1,3 @@
-require('./header.scss');
 var React = require('react');
 
 

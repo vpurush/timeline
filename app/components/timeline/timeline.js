@@ -1,5 +1,3 @@
-require('./timeLine.scss');
-
 var React = require('react');
 var TimeLineItem = require('./timeline-item');
 
