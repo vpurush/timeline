@@ -16,7 +16,6 @@ export const FetchingTimeLineItems = function(prevState, action){
 };
 
 export const FilteredTimeLineItems = function(prevState, action){
-    console.log("filteredtimelinelist reducer", prevState);
     if(action.type == "TIMELINE_FILTER"){
         if(action.filterText && action.filterText.length > 0){
             var filterTextLower = action.filterText.toLowerCase();
@@ -31,4 +30,12 @@ export const FilteredTimeLineItems = function(prevState, action){
         return action.data;
     }
     return prevState || [];
+};
+
+export const LastUpdated = (prevState, action) =>{
+    if(action.type == "RECEIVE_TIMELINE_DATA"){
+        return new Date().toLocaleTimeString();
+    }else{
+        return prevState || "";
+    }
 };

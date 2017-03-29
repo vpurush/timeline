@@ -1,44 +1,49 @@
-
-
-.item{
-    padding-top: 25px;
-    padding-bottom: 25px;
-    position: relative;
-
-    .circle{
-        height: 35px;
-        width: 35px;
-        border-radius: 50px;
-        border-color: lightgray;
-        border-width: 2px;
-        border-style: solid;
-        display: inline-block;
-
-    }
-
-    .date-time{
-        display: inline-block;
-        width: calc(100% - 65px);
+.timeline{
+    .last-updated{
         color: lightgray;
-        height: 35px;
-        vertical-align: text-bottom;
-        padding-left: 25px;
+        float: right;
     }
 
-    .line{
-        display: inline-block;
-        height: calc(100% - 35px);
-        border-left: 1px solid lightgray;
-        padding-left: 60px;
-        margin-left: 20px;
-        position: absolute;
-        left: -3px;
-        top: 60px;
-    }
+    .item{
+        padding-top: 25px;
+        padding-bottom: 25px;
+        position: relative;
 
-    &:hover{
         .circle{
-            background-color: lightblue;
+            height: 35px;
+            width: 35px;
+            border-radius: 50px;
+            border-color: lightgray;
+            border-width: 2px;
+            border-style: solid;
+            display: inline-block;
+
+        }
+
+        .date-time{
+            display: inline-block;
+            width: calc(100% - 65px);
+            color: lightgray;
+            height: 35px;
+            vertical-align: text-bottom;
+            padding-left: 25px;
+        }
+
+        .line{
+            display: inline-block;
+            height: calc(100% - 35px);
+            border-left: 1px solid lightgray;
+            padding-left: 60px;
+            margin-left: 20px;
+            position: absolute;
+            left: -3px;
+            top: 60px;
+        }
+
+        &:hover{
+            .circle{
+                background-color: lightblue;
+            }
         }
     }
 }

@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
     console.log("map state to props", ownProps);
 
     return {
-        List: state.Timeline.FilteredTimeLineItems
+        List: state.Timeline.FilteredTimeLineItems,
+        LastUpdated: state.Timeline.LastUpdated
     };
 };
 
