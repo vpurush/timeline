@@ -6,8 +6,14 @@ var applyMiddleware = require('redux').applyMiddleware;
 var Provider = require('react-redux').Provider;
 var reducer = require('../reducers/main.js');
 var thunkMiddleware = require('redux-thunk').default;
-var Header = require('./header.js');
+var Router = require('react-router').Router;
+var Route = require('react-router').Route;
+var BrowserRouter = require('react-router-dom').BrowserRouter;
+var HashRouter = require('react-router-dom').HashRouter;
+var NotFound = require('../components/not-found/not-found.js');
+var Page = require('../components/page/page.js');
 require('../stylesheets/main.scss');
+
 
 const store = createStore(
                     reducer,
@@ -16,10 +22,9 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
-            <Header store={store}></Header>
-            <ShowTimeLine></ShowTimeLine>
-        </div>
+        <HashRouter>
+            <Route path="/" component={Page}></Route>
+        </HashRouter>
     </Provider>,    
     document.getElementById('app')
 );
