@@ -1,5 +1,6 @@
 var React = require('react');
 var TimeLineItem = require('./timeline-item');
+var Link = require('react-router-dom').Link;
 
 
 var TimeLine = React.createClass({
@@ -12,7 +13,7 @@ var TimeLine = React.createClass({
         }
 
         html = (
-            <div className="timeline container">
+            <div className="timeline">
                 {lastUpdate}
                 {this.props.List.map((itm, i) => {
                     return (
@@ -24,6 +25,13 @@ var TimeLine = React.createClass({
                         </div>
                     );
                 })}
+                <div className="item">
+                    <div className="circle"></div>
+                    <div className="add-timeline-item">
+                        <i className="glyphicon glyphicon-plus"></i>
+                        <Link to="/timeline/create">Add Event</Link>
+                    </div>
+                </div>
             </div>
         );
         return html;

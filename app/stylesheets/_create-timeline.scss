@@ -1,0 +1,28 @@
+.create-timeline{
+    display: block;
+    top: 50%;
+    width: 60%;
+    left: 20%;
+    position: relative;
+    margin-top: calc((100vh - 276px)/2);
+
+    label[for="datetime"]{
+        display: block;
+    }
+
+    .date{
+        width: 45%;
+        display: inline-block;
+    }
+
+    .time{
+        width: 45%;
+        display: inline-block;
+        margin-left: 10%;
+    }
+
+    .error-message{
+        padding: 5px 0px 5px 0px;
+        color: red;
+    }
+}

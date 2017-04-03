@@ -45,5 +45,24 @@
                 background-color: lightblue;
             }
         }
+
+        .add-timeline-item{
+            display: inline-block;
+            width: calc(100% - 65px);
+            height: 35px;
+            vertical-align: text-bottom;
+            padding-left: 25px;
+            color: lightgray;
+
+            &:hover{
+                color: black;
+            }
+
+            a, i{
+                padding-left: 10px;
+                color: inherit;
+                text-decoration: none;
+            }
+        }
     }
 }
