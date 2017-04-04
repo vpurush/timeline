@@ -39,3 +39,11 @@ export const LastUpdated = (prevState, action) =>{
         return prevState || "";
     }
 };
+
+export const EditTimeLineItem = (prevState, action) =>{
+    if(action.type == "EDIT_TIMELINE_ITEM"){
+        return action.timelineItem;
+    }else{
+        return prevState || null;
+    }
+};

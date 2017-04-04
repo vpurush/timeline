@@ -46,3 +46,10 @@ export const filterTimelineItems = (filterText, timelineItems) => {
         timelineItems
     };    
 };
+
+export const editTimelineItem = (timelineItem) => {
+    return {
+        type: 'EDIT_TIMELINE_ITEM',
+        timelineItem
+    };
+};

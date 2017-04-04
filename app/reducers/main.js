@@ -6,7 +6,8 @@ var reducer = combineReducers({
                                                 TimeLineItems: Timeline.TimeLineItems,
                                                 FetchingTimeLineItems: Timeline.FetchingTimeLineItems,
                                                 FilteredTimeLineItems: Timeline.FilteredTimeLineItems,
-                                                LastUpdated: Timeline.LastUpdated
+                                                LastUpdated: Timeline.LastUpdated,
+                                                EditTimelineItem: Timeline.EditTimeLineItem
                                             })
                             });
 

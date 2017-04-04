@@ -1,7 +1,8 @@
 var React = require('react');
 var connect = require('react-redux').connect;
 var TimeLine = require('../components/timeline/timeline.js');
-var fetchTimelineItems = require('../actions/main.js').fetchTimelineItems;
+var fetchTimelineItemsAction = require('../actions/main.js').fetchTimelineItems;
+var editTimelineItemAction = require('../actions/main.js').editTimelineItem;
 
 const mapStateToProps = (state, ownProps) => {
     console.log("map state to props", ownProps);
@@ -12,10 +13,16 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    dispatch(fetchTimelineItems()); 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    dispatch(fetchTimelineItemsAction()); 
     return {
+        editTimelineItem: (data) => {
+            dispatch(editTimelineItemAction(data));
+            ownProps.history.push('/timelineitem/' + data._id.$oid + '/edit');
+        },
+        deleteTimelineItem: (data) => {
 
+        }
     };
 };
 

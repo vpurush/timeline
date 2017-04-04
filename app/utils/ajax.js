@@ -7,9 +7,9 @@ export const fetchData = (url, config) => {
         url = url + "?apiKey=QYsAaeLP2Q4InN71m94sdyAMxwbA9t7V";
     }
     if(config){
-        if(config.method && config.method.toLowerCase() == "post"){
+        if(config.method && (config.method.toLowerCase() == "post" || config.method.toLowerCase() == "put")){
             config.headers = {
-                //"Content-Type": "application/json"
+                "Content-Type": "application/json"
             };
         }
         if(config.body){
@@ -22,6 +22,7 @@ export const fetchData = (url, config) => {
         if (!response.ok) {
             throw Error(response.statusText);
         }
+        return response;
     })
     .then((response) => {
         return response.json();

@@ -1,16 +1,15 @@
 var React = require('React');
+var moment = require('moment');
 
-var CreateTimeline = React.createClass({
+var CreateEditTimeline = React.createClass({
     getInitialState: function(){
-        var dateNow = new Date();
-        var date = dateNow.getFullYear() + "-" + dateNow.getMonth().toString(10) + "-" + dateNow.getDate();
-        var time = dateNow.getHours() + ":" + dateNow.getMinutes() + ":" + dateNow.getSeconds();
         return {
-            title: "",
-            description: "",
-            date: date,
-            time: time,
-            error: null
+            title: this.props.title,
+            description: this.props.description,
+            date: moment(this.props.datetime).format('YYYY-MM-DD'),
+            time: moment(this.props.datetime).format('HH:mm:ss'),
+            error: null,
+            id: this.props.id
         }
     },
     setDate: function(e){
@@ -31,7 +30,7 @@ var CreateTimeline = React.createClass({
             title: this.state.title,
             description: this.state.description
         };
-        this.props.createTimeline(data).catch(() => {
+        this.props.createEditTimeline(this.state.id, data).catch(() => {
             console.log("set error");
             this.setState({error: 'Error occurred while saving data'});
         });
@@ -65,4 +64,4 @@ var CreateTimeline = React.createClass({
     }
 });
 
-module.exports = CreateTimeline;
+module.exports = CreateEditTimeline;
