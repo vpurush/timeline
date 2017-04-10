@@ -1,4 +1,5 @@
 var fetchData = require('../utils/ajax.js').fetchData;
+var moment = require('moment');
 
 export const startTimelineItemsFetch = () => {
     return {
@@ -19,7 +20,7 @@ const parseTimelineItems = (data) => {
         d.displayDatetime = new Date(d.dateTime).toDateString();
     });
     output = data.sort((a, b) => {
-        return a.dateTime > b.dateTime;
+        return moment(a.dateTime).diff(moment(b.dateTime));
     });
     return output;
 };
