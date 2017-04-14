@@ -1,5 +1,6 @@
 var combineReducers = require('redux').combineReducers;
 var Timeline = require('./timeline.js');
+var Authentication = require('./authentication.js').Authentication;
 
 var reducer = combineReducers({
                                 Timeline: combineReducers({
@@ -8,7 +9,8 @@ var reducer = combineReducers({
                                                 FilteredTimeLineItems: Timeline.FilteredTimeLineItems,
                                                 LastUpdated: Timeline.LastUpdated,
                                                 EditTimelineItem: Timeline.EditTimeLineItem
-                                            })
+                                            }),
+                                Authentication: Authentication
                             });
 
 module.exports = reducer;

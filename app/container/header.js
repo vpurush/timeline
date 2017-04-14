@@ -5,7 +5,7 @@ var _ = require('lodash');
 
 const mapStateToProps = (state, ownProps) => {
     return {
-
+        username: state.Authentication && state.Authentication.User ? state.Authentication.User.username: ""
     };
 };
 
@@ -22,7 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 };
 
-console.log("header", Header);
 module.exports = connect(
     mapStateToProps,
     mapDispatchToProps

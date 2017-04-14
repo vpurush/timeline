@@ -11,7 +11,7 @@ var Route = require('react-router').Route;
 var BrowserRouter = require('react-router-dom').BrowserRouter;
 var HashRouter = require('react-router-dom').HashRouter;
 var NotFound = require('../components/not-found/not-found.js');
-var Page = require('../components/page/page.js');
+var Page = require('./page.js');
 require('../stylesheets/main.scss');
 
 

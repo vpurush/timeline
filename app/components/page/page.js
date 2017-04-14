@@ -6,10 +6,28 @@ var ShowTimeLine = require('../../container/showtimeline.js');
 var NotFound = require('../not-found/not-found.js');
 var Switch = require('react-router-dom').Switch;
 var CreateEditTimeline = require('../../container/create-edit-timeline.js');
+var Login = require('../../container/login.js');
+
+window.onhashchange = (e) =>{
+    console.log("hash change", e);
+    e.preventDefault();
+    return false;
+};
 
 var Page = React.createClass({
     render: function(match){
-        console.log("match", match, this.props.router);
+
+        var authenticatedRoutes = ([]);
+        var redirect;
+
+        if(this.props.isAuthenticated){
+            authenticatedRoutes = ([<Route key="/timelineitem/create" path="/timelineitem/create" component={CreateEditTimeline} canNavigate={false}></Route>,
+                                    <Route key="/timelineitem/edit" path="/timelineitem/:timeLineItemId/edit" component={CreateEditTimeline}></Route>,
+                                    <Route key="/timeline" path="/timeline" component={ShowTimeLine}></Route>]);
+            redirect = (<Redirect from="*" to="/timeline"></Redirect>);
+        }else{
+            redirect = (<Redirect from="*" to="/login"></Redirect>);
+        }
 
         
         var html;
@@ -17,11 +35,11 @@ var Page = React.createClass({
             <div className="page container">
                 <Header></Header>
                 <Switch>
-                    <Route path="/timelineitem/create" component={CreateEditTimeline}></Route>
-                    <Route path="/timelineitem/:timeLineItemId/edit" component={CreateEditTimeline}></Route>
-                    <Route path="/timeline" component={ShowTimeLine}></Route>
-                    <Redirect exact from="/" to="/timeline"></Redirect>
-                    <Route path="*" component={NotFound}></Route>
+                    <Route path="/login" component={Login}></Route>
+                    {authenticatedRoutes}
+                    {redirect}
+                    
+                    <Route path="/not-found" component={NotFound}></Route>
                 </Switch>
             </div>
         )
