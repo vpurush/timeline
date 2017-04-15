@@ -2,6 +2,28 @@ var React = require('react');
 var connect = require('react-redux').connect;
 var Login = require('../components/login/login.js');
 var authSuccess = require("../actions/authentication.js").AuthenticationSuccess;
+var fetchData = require('../utils/ajax').fetchData;
+
+const getUser = (username) => {
+    var url = "https://api.mlab.com/api/1/databases/tln/collections/user/";
+    var query = { q: { username: { $eq: username } } };
+    return fetchData(url, { method: 'GET', params: query }).then((response) => {
+        if(response && response.length > 0){
+            return response[0];
+        }else{
+            return null;
+        }
+    });
+};
+
+const createUser = (username) => {
+    var url = "https://api.mlab.com/api/1/databases/tln/collections/user/";
+    var data = {username};
+    return fetchData(url, { method: 'POST', body: data }).then((response) => {
+        console.log("user creation successful", response);
+        return {username: response.username, id: response._id.$oid};
+    });
+};
 
 const mapStateToProps = (state, ownProps) => {
     console.log("mapStateToProps");
@@ -24,21 +46,46 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     console.log("username", username);
     if(username){ 
         dispatch(authSuccess(username));
-        ownProps.history.push('/timeline');
+        if(ownProps.history.location.pathname.indexOf('/timeline') == -1){
+            ownProps.history.push('/timeline');
+        }
     }
     return {
         login: (data) => {
             console.log("login", data);
-            sessionStorage.setItem("username", data.username);
-            dispatch(authSuccess(data.username));
-            ownProps.history.push('/timeline');
+            return getUser(data.username).then((response) => {
+                if(response){
+                    sessionStorage.setItem("username", data.username);
+                    dispatch(authSuccess(data.username));
+                    if(ownProps.history.location.pathname.indexOf('/timeline') == -1){
+                        ownProps.history.push('/timeline');
+                    }
+                }else{
+                    throw new Error("Username does not exist");
+                }
+            });
         },
         signup: (data) => {
             console.log("signup", data);
-            return fetchData(url, { method: 'PUT', body: data }).then((e) => {
-                sessionStorage.setItem("username", data.username);
-                dispatch(authSuccess(data.username));
-                ownProps.history.push('/timeline');
+            return new Promise(function(resolve, reject){
+                getUser(data.username).then((response) => {
+                    if(response){
+                        reject("username exists");
+                    }else{
+                        createUser(data.username).then((response) =>{
+                            getUser(data.username).then((response) => {
+                                if(response){
+                                    resolve();
+                                    sessionStorage.setItem("username", data.username);
+                                    dispatch(authSuccess(data.username, data.id));
+                                    ownProps.history.push('/timeline');
+                                }else{
+                                    reject("Error occurred");
+                                }
+                            });
+                        });
+                    }
+                }).catch(reject);
             });
         }
     };

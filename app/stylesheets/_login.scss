@@ -5,4 +5,12 @@
     left: 20%;
     position: relative;
     margin-top: calc((100vh - 276px)/2);
+
+    .error-message{
+        padding: 5px 0px 5px 0px;
+        color: red;
+    }
+    fieldset{
+        margin: 20px 0px 20px 0px;
+    }
 }

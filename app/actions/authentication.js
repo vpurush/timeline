@@ -1,6 +1,7 @@
-export const AuthenticationSuccess = (username) => {
+export const AuthenticationSuccess = (username, id) => {
     return {
         type: "AUTHENTICATE",
-        username: username
+        username: username,
+        id: id
     };
 };
