@@ -17,13 +17,18 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
+                loader: 'file-loader?name=/font/[name].[ext]'
             }
         ]
     },
     devtool: '#eval-source-map',
     output:{
         filename: 'transformed.js',
-        path: __dirname + '/dist/'
+        path: __dirname + '/dist/',
+        publicPath: 'http://localhost:8080/',
     },
     plugins: [HTMLWebpackPluginConfig],
     node: {

@@ -12,6 +12,7 @@ var Header = React.createClass({
             timelineSearch = (<input className="timeline-filter form-control" type="text" onChange={this.props.timelineFilterChange} placeholder="Type to filter in this timeline" />);
         }
         var html = (<header>
+                        <span className="logo">Timeline</span>
                         {timelineSearch}
                         {user}
                     </header>);

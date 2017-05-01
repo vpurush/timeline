@@ -1,3 +1,19 @@
+@font-face{
+    font-family: dancing-script;
+    font-weight: normal;
+    font-style: normal;
+    src: url('../font/DancingScript-Regular.woff2') format("woff2"),
+        url('../font/DancingScript-Regular.otf') format("opentype"),
+        url('../font/DancingScript-Regular.woff') format("woff"),
+        url('../font/Great-Day-Personal-Use.ttf') format("truetype");
+}
+
+.logo{
+    // color: cornflowerblue;
+    color: white;
+    font-family: "dancing-script";
+}
+
 @import 'header';
 @import 'timeline-item';
 @import 'timeline';
