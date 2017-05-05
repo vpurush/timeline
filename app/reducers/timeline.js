@@ -47,3 +47,12 @@ export const EditTimeLineItem = (prevState, action) =>{
         return prevState || null;
     }
 };
+
+export const TimelineList = (prevState, action) => {
+    if(action.type == 'RECEIVE_TIMELINE_LIST'){
+        console.log("RECEIVE_TIMELINE_LIST received");
+        return action.data;
+    }else{
+        return prevState || [];
+    }
+};

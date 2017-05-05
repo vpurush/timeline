@@ -3,6 +3,7 @@ var Route = require('react-router').Route;
 var Redirect = require('react-router').Redirect;
 var Header = require('../../container/header.js');
 var ShowTimeLine = require('../../container/showtimeline.js');
+var TimeLineList = require('../../container/timeline-list.js');
 var NotFound = require('../not-found/not-found.js');
 var Switch = require('react-router-dom').Switch;
 var CreateEditTimeline = require('../../container/create-edit-timeline.js');
@@ -21,10 +22,11 @@ var Page = React.createClass({
         var redirect;
 
         if(this.props.isAuthenticated){
-            authenticatedRoutes = ([<Route key="/timelineitem/create" path="/timelineitem/create" component={CreateEditTimeline} canNavigate={false}></Route>,
-                                    <Route key="/timelineitem/edit" path="/timelineitem/:timeLineItemId/edit" component={CreateEditTimeline}></Route>,
-                                    <Route key="/timeline" path="/timeline" component={ShowTimeLine}></Route>]);
-            redirect = (<Redirect from="*" to="/timeline"></Redirect>);
+            authenticatedRoutes = ([<Route key="/timelineitem/create" path="/timeline/:timelineid/timelineitem/create" component={CreateEditTimeline} canNavigate={false}></Route>,
+                                    <Route key="/timelineitem/edit" path="/timeline/:timelineid/timelineitem/:timeLineItemId/edit" component={CreateEditTimeline}></Route>,
+                                    <Route key="/timeline" path="/timeline/:timelineid" component={ShowTimeLine}></Route>,
+                                    <Route key="/timelinelist" path="/timelinelist" component={TimeLineList}></Route>]);
+            redirect = (<Redirect from="*" to="/timelinelist"></Redirect>);
         }else{
             redirect = (<Redirect from="*" to="/login"></Redirect>);
         }
@@ -33,7 +35,7 @@ var Page = React.createClass({
         var html;
         html = (
             <div className="page container">
-                <Header></Header>
+                <Header store={this.props.store}></Header>
                 <Switch>
                     <Route path="/login" component={Login}></Route>
                     {authenticatedRoutes}

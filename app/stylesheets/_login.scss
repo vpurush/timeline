@@ -1,10 +1,10 @@
 .login{
     display: block;
-    top: 50%;
+    top: calc(50vh - 100vh/4);
     width: 60%;
     left: 20%;
     position: relative;
-    margin-top: calc((100vh - 276px)/2);
+    // margin-top: calc((100vh - 276px)/2);
 
     .error-message{
         padding: 5px 0px 5px 0px;

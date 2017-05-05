@@ -1,0 +1,42 @@
+.timeline-list{
+    .timeline-list-item{
+        padding: 10px 10px 10px 10px;
+        
+        .name{
+            padding-left: 30px;
+            font-size: 2em;
+        }
+
+        .desc{
+            padding-left: 30px;
+            font-size: 1em;
+        }
+    }
+
+    .create-timeline-link{
+        padding: 10px 0px 10px 0px;
+        color: lightseagreen;
+        text-align: center;
+
+        i{
+            // border: solid 1px lightseagreen;
+            // border-radius: 20px;
+            // height: 20px;
+            // width: 20px;
+            // text-align: center;
+            font-size: 2em;
+            display: inline-block;
+        }
+        .desc{
+            padding-left: 20px;
+            vertical-align: super;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        &:hover{
+            color: lightblue;
+            cursor: pointer;
+        }
+    }
+}

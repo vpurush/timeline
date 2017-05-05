@@ -3,7 +3,8 @@ export const Authentication = (prevState, action) => {
         return {
             isAuthenticated: true,
             User: {
-                username: action.username
+                username: action.username,
+                userid: action.userid
             }
         };
     }else{

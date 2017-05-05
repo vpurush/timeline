@@ -1,7 +1,7 @@
 var React = require('react');
 var connect = require('react-redux').connect;
 var Login = require('../components/login/login.js');
-var authSuccess = require("../actions/authentication.js").AuthenticationSuccess;
+var authSuccess = require("../actions/main.js").AuthenticationSuccess;
 var fetchData = require('../utils/ajax').fetchData;
 
 const getUser = (username) => {
@@ -14,6 +14,10 @@ const getUser = (username) => {
             return null;
         }
     });
+};
+
+const goToDefaultPage = (history) => {
+    history.push('/timelinelist');
 };
 
 const createUser = (username) => {
@@ -31,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
         console.log("location.hash", ownProps.location.pathname, ownProps.history.location.pathname, ownProps.history);
         if(ownProps.history.location.pathname.indexOf('/timeline') == -1){
             console.log("inside");
-            ownProps.history.push('/timeline');
+            goToDefaultPage(ownProps.history);
         }
     }
 
@@ -43,11 +47,12 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     console.log("mapDispatchToProps");
     var username = sessionStorage.getItem("username");
+    var userid = sessionStorage.getItem("userid");
     console.log("username", username);
-    if(username){ 
-        dispatch(authSuccess(username));
+    if(username && userid){ 
+        dispatch(authSuccess(username, userid));
         if(ownProps.history.location.pathname.indexOf('/timeline') == -1){
-            ownProps.history.push('/timeline');
+            goToDefaultPage(ownProps.history);
         }
     }
     return {
@@ -56,9 +61,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             return getUser(data.username).then((response) => {
                 if(response){
                     sessionStorage.setItem("username", data.username);
-                    dispatch(authSuccess(data.username));
+                    sessionStorage.setItem("userid", response._id.$oid);
+                    console.log("userid", response._id.$oid);
+                    dispatch(authSuccess(data.username, response._id.$oid));
                     if(ownProps.history.location.pathname.indexOf('/timeline') == -1){
-                        ownProps.history.push('/timeline');
+                        goToDefaultPage(ownProps.history);
                     }
                 }else{
                     throw new Error("Username does not exist");
@@ -73,16 +80,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                         reject("username exists");
                     }else{
                         createUser(data.username).then((response) =>{
-                            getUser(data.username).then((response) => {
-                                if(response){
-                                    resolve();
-                                    sessionStorage.setItem("username", data.username);
-                                    dispatch(authSuccess(data.username, data.id));
-                                    ownProps.history.push('/timeline');
-                                }else{
-                                    reject("Error occurred");
-                                }
-                            });
+                            if(response){
+                                resolve();
+                                sessionStorage.setItem("username", data.username);
+                                sessionStorage.setItem("userid", response._id.$oid);
+                                console.log("response", response._id.$oid);
+                                dispatch(authSuccess(data.username, response._id.$oid));
+                                goToDefaultPage(ownProps.history);
+                            }else{
+                                reject("Error occurred");
+                            }
                         });
                     }
                 }).catch(reject);

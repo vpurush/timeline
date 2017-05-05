@@ -27,14 +27,16 @@ toastr.options = {
 const mapStateToProps = (state, ownProps) => {
     return {
         List: state.Timeline.FilteredTimeLineItems,
-        LastUpdated: state.Timeline.LastUpdated
+        LastUpdated: state.Timeline.LastUpdated,
+        timelineid: ownProps.match.params.timelineid
     };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    dispatch(fetchTimelineItemsAction()); 
+    dispatch(fetchTimelineItemsAction(ownProps.match.params.timelineid)); 
     return {
         editTimelineItem: (data) => {
+            data.timelineid = ownProps.match.params.timelineid;
             dispatch(editTimelineItemAction(data));
             ownProps.history.push('/timelineitem/' + data._id.$oid + '/edit');
         },

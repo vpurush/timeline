@@ -4,6 +4,7 @@ var Authentication = require('./authentication.js').Authentication;
 
 var reducer = combineReducers({
                                 Timeline: combineReducers({
+                                                TimelineList: Timeline.TimelineList,
                                                 TimeLineItems: Timeline.TimeLineItems,
                                                 FetchingTimeLineItems: Timeline.FetchingTimeLineItems,
                                                 FilteredTimeLineItems: Timeline.FilteredTimeLineItems,

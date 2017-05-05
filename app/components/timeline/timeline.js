@@ -50,7 +50,7 @@ var TimeLine = React.createClass({
                     <div className="circle"></div>
                     <div className="add-timeline-item">
                         <i className="glyphicon glyphicon-plus"></i>
-                        <Link to="/timelineitem/create">Add Event</Link>
+                        <Link to={"/timeline/" + this.props.timelineid + "/timelineitem/create"}>Add Event</Link>
                     </div>
                 </div>
             </div>
