@@ -1,15 +1,17 @@
 var React = require('React');
 var connect = require('react-redux').connect;
-var createEditTimeline = require('../components/timeline/create-edit-timeline.js');
+var createEditTimelineItem = require('../components/timeline/create-edit-timeline-item.js');
 var createTimelineAction = require('../actions/timeline.js').createTimeline;
 var fetchData = require('../utils/ajax.js').fetchData;
 
 const mapStateToProps = (state, ownProps) => {
+    var timelineid = ownProps.match.params.timelineid;
     if(ownProps.match.url.indexOf("/timelineitem/create") != -1){
         return {
             title: "",
             description: "",
-            datetime: new Date()
+            datetime: new Date(),
+            timelineid: timelineid
         };
     }else{
         if(state.Timeline.EditTimelineItem){
@@ -21,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
                 title: state.Timeline.EditTimelineItem.title,
                 description: state.Timeline.EditTimelineItem.description,
                 datetime: dateTime,
-                id: state.Timeline.EditTimelineItem._id.$oid
+                id: state.Timeline.EditTimelineItem._id.$oid,
+                timelineid: timelineid
             };
         }
     }
@@ -30,13 +33,14 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createEditTimeline: (id, timelineItem) => {
-            console.log("submit called", timelineItem);
+            var timelineid = ownProps.match.params.timelineid;
+            console.log("submit called", timelineItem, timelineid);
 
             if(!id){
                 var url = "https://api.mlab.com/api/1/databases/tln/collections/timelineitem";
                 return fetchData(url, { method: 'POST', body: timelineItem }).then((e) => {
                     console.log("create success", e);
-                    ownProps.history.push('/timeline');
+                    ownProps.history.push('/timeline/' + timelineid);
                 }).catch((e) => {
                     console.log("create failed", e);
                     throw e;
@@ -45,7 +49,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 var url = "https://api.mlab.com/api/1/databases/tln/collections/timelineitem/" + id;
                 return fetchData(url, { method: 'PUT', body: timelineItem }).then((e) => {
                     console.log("edit success", e);
-                    ownProps.history.push('/timeline');
+                    ownProps.history.push('/timeline/' + timelineid);
                 }).catch((e) => {
                     console.log("edit failed", e);
                     throw e;
@@ -58,4 +62,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 module.exports = connect(
     mapStateToProps,
     mapDispatchToProps
-)(createEditTimeline);
+)(createEditTimelineItem);

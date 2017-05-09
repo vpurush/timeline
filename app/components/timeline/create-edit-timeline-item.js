@@ -28,7 +28,8 @@ var CreateEditTimeline = React.createClass({
         var data = {
             dateTime: new Date(this.state.date + " " + this.state.time),
             title: this.state.title,
-            description: this.state.description
+            desc: this.state.description,
+            timelineid: this.props.timelineid
         };
         this.props.createEditTimeline(this.state.id, data).catch(() => {
             console.log("set error");

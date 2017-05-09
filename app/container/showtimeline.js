@@ -45,6 +45,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             return fetchData(url, { method: 'DELETE' }).then((e) => {
                 console.log("delete success", e);
                 toastr.success("Deleted successfully");
+                dispatch(fetchTimelineItemsAction(ownProps.match.params.timelineid)); 
             }).catch((e) => {
                 console.log("delete failed", e);
                 throw e;
