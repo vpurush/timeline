@@ -17,6 +17,7 @@ class TimelineList extends React.Component{
                         <div key={i} className="timeline-list-item" onClick={this.props.onClick(itm)}>
                             <div className="name">{itm.name}</div>
                             <div className="desc">{itm.desc}</div>
+                            <hr/>
                         </div>
                     );
                 })}

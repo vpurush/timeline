@@ -7,6 +7,7 @@ var TimeLineList = require('../../container/timeline-list.js');
 var NotFound = require('../not-found/not-found.js');
 var Switch = require('react-router-dom').Switch;
 var CreateEditTimelineItem = require('../../container/create-edit-timeline-item.js');
+var CreateEditTimeline = require('../../container/create-edit-timeline.js');
 var Login = require('../../container/login.js');
 
 window.onhashchange = (e) =>{
@@ -24,6 +25,7 @@ var Page = React.createClass({
         if(this.props.isAuthenticated){
             authenticatedRoutes = ([<Route key="/timelineitem/create" path="/timeline/:timelineid/timelineitem/create" component={CreateEditTimelineItem} canNavigate={false}></Route>,
                                     <Route key="/timelineitem/edit" path="/timeline/:timelineid/timelineitem/:timeLineItemId/edit" component={CreateEditTimelineItem}></Route>,
+                                    <Route key="/timeline/create" path="/timeline/create" component={CreateEditTimeline}></Route>,
                                     <Route key="/timeline" path="/timeline/:timelineid" component={ShowTimeLine}></Route>,
                                     <Route key="/timelinelist" path="/timelinelist" component={TimeLineList}></Route>]);
             redirect = (<Redirect from="*" to="/timelinelist"></Redirect>);

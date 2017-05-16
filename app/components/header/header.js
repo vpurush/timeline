@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router-dom').Link;
 
 
 var Header = React.createClass({
@@ -12,7 +13,7 @@ var Header = React.createClass({
             timelineSearch = (<input className="timeline-filter form-control" type="text" onChange={this.props.timelineFilterChange} placeholder="Type to filter in this timeline" />);
         }
         var html = (<header>
-                        <span className="logo">Timeline</span>
+                        <Link to={'/timelinelist'}><span className="logo">Timeline</span></Link>
                         {timelineSearch}
                         {user}
                     </header>);
