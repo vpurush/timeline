@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         editTimelineItem: (data) => {
             data.timelineid = ownProps.match.params.timelineid;
             dispatch(editTimelineItemAction(data));
-            ownProps.history.push('/timelineitem/' + data._id.$oid + '/edit');
+            ownProps.history.push('/timeline/' + data.timelineid + '/timelineitem/' + data._id.$oid + '/edit');
         },
         deleteTimelineItem: (data) => {
             var url = "https://api.mlab.com/api/1/databases/tln/collections/timelineitem/" + data._id.$oid;

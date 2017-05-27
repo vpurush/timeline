@@ -64,6 +64,21 @@
                 text-decoration: none;
             }
         }
+
+        &.hidden-md.hidden-lg{
+            .full-screen-window{
+                *{
+                    text-align: center;
+                }
+                
+                .edit, .delete{
+                    cursor: pointer;
+                    padding: 0.5em 0em 0.5em 0em;
+                    text-align: center;
+                    color: cornflowerblue;
+                }
+            }
+        }
     }
 
     .dropdown{

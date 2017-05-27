@@ -15,9 +15,10 @@
 }
 
 @import '../components/header/header.scss';
+@import '../components/full-screen/full-screen.scss';
 @import 'timeline-item';
 @import 'timeline-list';
-@import 'timeline';
+@import '../components/timeline/timeline.scss';
 @import 'not-found';
 @import 'create-edit-timeline';
 @import '../../node_modules/toastr/toastr.scss';

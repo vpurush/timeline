@@ -1,6 +1,19 @@
-.timeline-item{
-    display: inline-block;
-    width: calc(100% - 125px);
-    padding-left: 60px;
-    vertical-align: top;
+.timeline{
+    .item.hidden-xs.hidden-sm{
+        .timeline-item{
+            display: inline-block;
+            width: calc(100% - 10em);
+            padding-left: 60px;
+            vertical-align: top;
+        }
+    }
+
+    .item.hidden-md.hidden-lg{
+        .timeline-item{
+            display: inline-block;
+            width: 100%;
+            padding-left: 60px;
+            vertical-align: top;
+        }
+    }
 }

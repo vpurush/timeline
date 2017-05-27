@@ -14,7 +14,9 @@ var TimeLineItem = React.createClass({
         if(this.props.desc){
             desc = <span>{this.props.desc}</span>;
         }
-        html = (<div className="timeline-item">{title}{img}{desc}</div>);
+        html = (
+            <div className="timeline-item">{title}{img}{desc}</div>
+        );
         return html;
     }
 });

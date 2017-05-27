@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 
             return {
                 title: state.Timeline.EditTimelineItem.title,
-                description: state.Timeline.EditTimelineItem.description,
+                description: state.Timeline.EditTimelineItem.desc,
                 datetime: dateTime,
                 id: state.Timeline.EditTimelineItem._id.$oid,
                 timelineid: timelineid
