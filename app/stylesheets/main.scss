@@ -14,7 +14,7 @@
     font-family: "dancing-script";
 }
 
-@import 'header';
+@import '../components/header/header.scss';
 @import 'timeline-item';
 @import 'timeline-list';
 @import 'timeline';
@@ -22,3 +22,4 @@
 @import 'create-edit-timeline';
 @import '../../node_modules/toastr/toastr.scss';
 @import 'login';
+@import '../components/modal/modal.scss';

@@ -1,3 +1,4 @@
+require('modernizr');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ShowTimeLine = require('./showtimeline.js');
