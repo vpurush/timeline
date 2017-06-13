@@ -1,0 +1,81 @@
+.timeline-list{
+    .timeline-list-item{
+        padding: 10px 10px 10px 10px;
+        
+        &:first-child{
+            padding-top: 20px;
+        }
+
+        hr{
+            width: 50%;
+            left: calc(50% / 2);
+        }
+
+        .main{
+            margin-bottom: 1em;
+        
+            .name{
+                padding-left: 30px;
+                font-size: 2em;
+            }
+
+            .desc{
+                padding-left: 30px;
+                font-size: 1em;
+            }
+        }
+        .actions{
+            .edit{
+                padding: 0em .5em 0em .5em;
+                &:hover{
+                    color: green;
+                    cursor: pointer;
+                }
+            }
+
+            .delete{
+                padding: 0em .5em 0em .5em;
+                &:hover{
+                    color: red;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .timeline-modal{
+            .edit{
+                text-align: center;                
+                color: cornflowerblue;
+                padding-bottom: 1em;
+            }
+
+            .delete{
+                text-align: center;
+                color: cornflowerblue;
+                padding-bottom: 1em;
+            }
+        }
+    }
+
+    .create-timeline-link{
+        padding: 10px 0px 10px 0px;
+        color: lightseagreen;
+        text-align: center;
+
+        i{
+            font-size: 2em;
+            display: inline-block;
+        }
+        .desc{
+            padding-left: 20px;
+            vertical-align: super;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        &:hover{
+            color: lightblue;
+            cursor: pointer;
+        }
+    }
+}

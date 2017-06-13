@@ -80,3 +80,11 @@ export const fetchTimelineList = () => {
         });
     };
 };
+
+export const editTimeline = (timeline) => {
+    return {
+        type: 'EDIT_TIMELINE',
+        timeline
+    };
+};
+

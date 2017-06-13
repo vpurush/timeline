@@ -56,3 +56,11 @@ export const TimelineList = (prevState, action) => {
         return prevState || [];
     }
 };
+
+export const EditTimeLine = (prevState, action) =>{
+    if(action.type == "EDIT_TIMELINE"){
+        return action.timeline;
+    }else{
+        return prevState || null;
+    }
+};

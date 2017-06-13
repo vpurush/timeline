@@ -25,6 +25,7 @@ var Page = React.createClass({
         if(this.props.isAuthenticated){
             authenticatedRoutes = ([<Route key="/timelineitem/create" path="/timeline/:timelineid/timelineitem/create" component={CreateEditTimelineItem} canNavigate={false}></Route>,
                                     <Route key="/timelineitem/edit" path="/timeline/:timelineid/timelineitem/:timeLineItemId/edit" component={CreateEditTimelineItem}></Route>,
+                                    <Route key="/timeline/edit" path="/timeline/:timelineid/edit" component={CreateEditTimeline}></Route>,
                                     <Route key="/timeline/create" path="/timeline/create" component={CreateEditTimeline}></Route>,
                                     <Route key="/timeline" path="/timeline/:timelineid" component={ShowTimeLine}></Route>,
                                     <Route key="/timelinelist" path="/timelinelist" component={TimeLineList}></Route>]);

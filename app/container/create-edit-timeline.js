@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     var timelineid = ownProps.match.params.timelineid;
     if(ownProps.match.url.indexOf("/timeline/create") != -1){
         return {
-            title: "",
+            name: "",
             description: "",
             timelineid: null,
             userid: state.Authentication.User.userid
@@ -17,8 +17,8 @@ const mapStateToProps = (state, ownProps) => {
         if(state.Timeline.EditTimeline){
 
             return {
-                title: state.Timeline.EditTimeline.title,
-                description: state.Timeline.EditTimeline.description,
+                name: state.Timeline.EditTimeline.name,
+                description: state.Timeline.EditTimeline.desc,
                 timelineid: state.Timeline.EditTimeline._id.$oid,
                 userid: state.Authentication.User.userid
             };

@@ -19,7 +19,9 @@ export const fetchData = (url, config) => {
             config.headers = {
                 "Content-Type": "application/json"
             };
-        }else if(config.method || config.method.toLowerCase() == "get"){
+        }
+        
+        if(config.params){
             if(url.indexOf('?') == -1){
                 url = url + '?';
             }else{

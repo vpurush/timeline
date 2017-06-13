@@ -9,7 +9,8 @@ var reducer = combineReducers({
                                                 FetchingTimeLineItems: Timeline.FetchingTimeLineItems,
                                                 FilteredTimeLineItems: Timeline.FilteredTimeLineItems,
                                                 LastUpdated: Timeline.LastUpdated,
-                                                EditTimelineItem: Timeline.EditTimeLineItem
+                                                EditTimelineItem: Timeline.EditTimeLineItem,
+                                                EditTimeline: Timeline.EditTimeLine,
                                             }),
                                 Authentication: Authentication
                             });
